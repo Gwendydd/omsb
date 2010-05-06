@@ -1,0 +1,24 @@
+#login, .tagline, #nav, #nav_cat, #actions, #logo {
+  display: none;
+  }
+
+body {
+  background: white;
+  color: black;
+  }
+
+P {
+  text-align: justify;
+  margin: 0 0 0 0;
+  }
+
+span.label {
+  font-weight: bold;
+  }
+
+H5 {
+  margin: 0;
+  border-bottom: 1px solid black;
+  font-size: larger;
+  text-align: center;
+  }

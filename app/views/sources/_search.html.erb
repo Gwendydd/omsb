@@ -1,0 +1,87 @@
+<% if params[:search] %>
+<div id="results">
+  <%= render :partial => "results" %>
+</div>
+<% end %>
+
+
+<% form_for @search do |f| %>
+<fieldset>
+  <legend>Search the Online Medieval Sources Bibliography</legend>
+
+<% f.fields_for @search.conditions do |sources| %>
+
+  <%= sources.hidden_field :live_is, :value => 1 %>
+
+<p>
+  Text Name:                   <%= sources.text_field :text_name_keywords, :size => 95 %>      <br />
+                               <% sources.fields_for sources.object.authors do |authors| %>
+                                 Medieval Author:
+                                   <%= authors.text_field :name_keywords, :size => 90 %>
+                               <% end %>  <br />
+  You can find all records by an author by using the <%= link_to "Medieval Author Search", authors_path,
+         :popup => true %>.<br />
+  Modern Editor/Translator:    <%= sources.text_field :editor_keywords, :size => 80 %>         <br />
+</p>
+<p>
+  <%= sources.check_box :link_is_not_blank, {}, "1", "" %>      Limit search to sources available online
+  <%= sources.check_box :app_facsimile_is, {}, "1", "" %>       Limit search to facsimiles
+</p>
+<p>
+  Date: after                <%= sources.text_field :date_begin_gt, :size => 4 %>
+  and/or before              <%= sources.text_field :date_end_lt, :size => 4 %>
+</p>
+
+<table width="100%">
+  <tr><td width="50%">
+    <% sources.fields_for sources.object.languages do |languages| %>
+      Original Language:<br />
+        <%= languages.select :name, language_options,
+                                    {},{:include_blank => true, :multiple => true, :size=>5} %>
+    <% end %>
+    <br /><small>Press Control to select multiple languages and find<br /> records that include <i>all</i> of 
+    those languages.</small>
+  </td><td>
+      <%= sources.check_box :trans_none_is, {}, "1", "" %>       Original Language Included <br />
+      <%= sources.check_box :trans_english_is, {}, "1", "" %>    Translated into English <br />
+      <%= sources.check_box :trans_french_is, {}, "1", "" %>     Translated into French   <br />
+      <%= sources.check_box :trans_other_is, {}, "1", "" %>      Translated into another language <br />
+  </td></tr>
+  <tr><td>
+    <% sources.fields_for sources.object.countries do |countries| %>
+      Geopolitical Region:<br />
+        <%= countries.select :name, country_options,
+                                    {},{:include_blank => true, :multiple => true, :size=>5} %>
+    <% end %>
+    <br /><small>Press Control to select multiple countries and find<br /> records that include <i>all</i> of
+    those countries.</small>
+  </td><td>
+    County/Parish/Town/Village: <br /> <%= sources.text_field :region_keywords, :size => 35 %>
+  </td></tr>
+  <tr><td>
+    <% sources.fields_for sources.object.types do |types| %>
+      Record Type:<br />
+        <%= types.select :name, type_options,
+                                    {},{:include_blank => true, :multiple => true, :size=>5} %>
+    <% end %>
+    <br /><small>Press Control to select multiple record types and find<br /> records that include <i>all</i> of
+    those record types.</small>
+  </td><td>
+    <% sources.fields_for sources.object.subjects do |subjects| %>
+      Subject Headings:<br />
+        <%= subjects.select :name, subject_options,
+                                    {},{:include_blank => true, :multiple => true, :size=>5} %>
+    <% end %>
+    <br /><small>Press Control to select multiple subject headings and find<br /> records that include <i>all</i> 
+    of those subject headings.</small>
+  </td></tr>
+</table>
+
+<% end %>
+
+<p>
+  <%= f.submit "Search" %>
+</p>
+</fieldset>
+<% end %>
+

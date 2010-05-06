@@ -1,0 +1,5 @@
+<h3>Record Details</h3>
+
+<% @sources.each do |source| %>
+<%= render :partial => 'sources/show_source', :locals => {:source => source} %>
+<% end %>

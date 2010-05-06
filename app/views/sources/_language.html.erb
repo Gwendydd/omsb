@@ -1,0 +1,12 @@
+<div class="language">
+<% new_or_existing = language.new_record? ? 'new' : 'existing' %>
+<% prefix = "source[#{new_or_existing}_language_attributes][]" %>
+
+<% fields_for prefix, language do |language_form| %>
+  <p>
+   <%= language_form.select :name, language_options, :include_blank => true %>
+    <%= link_to_function "remove", "$(this).up('.language').remove()" %>
+  </p>
+<% end %>
+</div>
+

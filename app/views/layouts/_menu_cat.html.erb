@@ -1,0 +1,8 @@
+<div id="nav_cat">
+  <%= link_to "Cataloger Home", {:controller => 'sources', :action => 'cataloger', :id => 'all'} %> | 
+  <%= link_to "Create New Record", {:controller => 'sources', :action => 'new'} %> | 
+  <%= link_to "See Your Records", user_path(current_user) %> | 
+  <%= link_to "View/Search Authors", authors_path %> | 
+  <%= link_to "Cataloging Instructions", {:controller => 'about', :action => 'instructions' } %>
+</div>
+

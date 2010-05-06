@@ -1,0 +1,273 @@
+BODY {
+  background: #fffccc url(/images/background.jpg) no-repeat fixed;
+  }
+
+P { 
+  text-align: justify;  
+  margin: 1em 2em 1em 5em 
+  }
+
+table {
+  margin-left: 5em
+  }
+
+UL { 
+  margin: 1em 2em 1em 5em 
+  }
+
+OL {
+  margin: 1em 2em 1em 5em
+  }
+
+SPAN.big { 
+ font-size: larger 
+  }
+
+#logo { 
+  text-align: center
+  }
+
+#notice {
+  text-align: center;
+  background-color: #FFFF99; 
+  }
+
+#error {
+  text-align: center;
+  background-color: #CC3333;
+  color: #FFFCCC;
+  }
+
+#error_message {
+  margin: 1em 2em 1em 5em
+  border: 2px solid #CC3333;
+  }
+
+div.fieldWithErrors {
+  margin: 1em 2em 1em 5em
+  border: 3px solid #CC3333;
+  color: #FFFCCC;
+  }
+
+.odd {
+  background-color: #CCCC99
+  }
+
+SPAN.field { font-variant: small-caps; font-size: medium }
+#field  { font-variant: small-caps }
+
+#container { margin: 1em 2em 1em 5em; border-left: thin solid
+#999966; border-right: thin solid #999966; border-bottom: thin solid
+#999966; }
+#title { float: left; width: 150px; border-top: thin solid #999966 }
+#description  { margin-left: 150px; border-left: thin solid #999966;
+border-top: thin solid #999966 }
+#not { background-color: #CCCC99 }
+
+H1, H2, H3, H4  {
+  text-align: center
+  }
+
+H5 {
+  text-align: left;
+  border-bottom: 1px solid #999966;
+  color: #999966;
+  letter-spacing: 0.1em;
+  margin: 0;
+  }
+
+#instructions H5 {
+  margin: 0 0 0 5em;
+  }
+
+.tagline {
+  text-size: smaller;
+  font-weight: normal;
+  margin: 0;
+  }
+
+#nav, #nav_cat {
+  text-align: center;
+  }
+
+hr {
+  width: 80%;
+  }
+
+
+
+/*search page*/
+
+
+fieldset {
+  margin-left: 5em;
+  border: 2px solid #CCCC99;
+  }
+
+legend {
+  font-weight: bold;
+  }
+
+fieldset p {
+  margin: .5em 0em;
+  }
+
+fieldset table {
+  margin-left: 0em;
+  }
+
+
+/*search results*/
+
+#results {
+  list-style-type: none;
+  }
+
+#results ul {
+  margin-left: 3em;
+  }
+
+.page {
+  padding: .5em;
+  }
+
+/* details page */
+
+#details {
+  margin-left: 5em;
+  border: 2px solid #CCCC99;
+  }
+
+
+#details * span.label {
+  color: #666633;;
+  }
+
+#details * span.data {
+  }
+
+#details * p {
+  margin: 0;
+  }
+
+#details > div {
+  margin: .5em;
+  }
+
+#publicationinfo {
+  background-color: #CCCC99;
+  font-size: 104%;
+  }
+
+#details * table {
+  margin: 0;
+  }
+
+/* sources/show_cat */
+#details_cat {
+  margin-left: 5em;
+  }
+
+
+#details_cat * span.label {
+  color: #666633;;
+  }
+
+#details_cat * span.data {
+  }
+
+#details_cat * p {
+  margin: 0;
+  }
+
+#details_cat > div {
+  margin: .5em;
+  }
+
+#publicationinfo {
+  background-color: #CCCC99;
+  font-size: 104%;
+  }
+
+#details_cat * table {
+  margin: 0;
+  }
+
+
+
+/* entry form */
+#entry ul {
+   list-style-type: none;
+   margin-left: 1em;
+   }
+
+#select_authors, #select_languages, #select_countries, #select_types, #select_headings {
+   height: 170px;
+   overflow: scroll;
+   border: 1px solid #666633;
+   }
+
+#entry H5 {
+  margin: 0 0 0 5em;
+  }
+
+#errorExplanation {
+  margin: 1em 2em 1em 5em;
+  border: 3px outset #999966;
+  }
+
+#errorExplanation h2 {
+  font-size: smaller;
+  text-align: left
+  }
+
+#errorExplanation p {
+  margin: 0;
+  }
+
+.fieldWithErrors  {
+  margin: 1em 2em 1em 5em;
+  border: 3px solid #CC3333;
+  }
+
+#none li {
+  margin-left: -2em;
+  list-style-type: disc;
+  }
+
+
+/* login */
+#login {
+  text-align: right;
+  font-size: smaller;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  }
+
+#login li {
+  list-style-type: none;
+  }
+
+input#login {
+  position: relative;
+  }
+
+#actions {
+  font-size: smaller;
+  margin-left: 1em;
+  margin-top: 0em;
+  }
+
+
+/* list of user's records */
+
+#private {
+  background-color: #CCCC99;
+  }
+
+
+#recordlist {
+  list-style-type: none;
+  }
+

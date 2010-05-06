@@ -1,0 +1,3 @@
+<% @source.authors.each do |author| %>
+  <%= link_to author.name, {:controller => 'authors', :action => 'show', :id => author.id} %>
+<% end %>

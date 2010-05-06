@@ -1,0 +1,11 @@
+<div class="country">
+<% new_or_existing = country.new_record? ? 'new' : 'existing' %>
+<% prefix = "source[#{new_or_existing}_country_attributes][]" %>
+
+<% fields_for prefix, country do |country_form| %>
+  <p>
+   <%= country_form.select :name, country_options, :include_blank => true %> 
+    <%= link_to_function "remove", "$(this).up('.country').remove()" %>
+  </p>
+<% end %>
+</div>

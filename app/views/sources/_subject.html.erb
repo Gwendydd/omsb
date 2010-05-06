@@ -1,0 +1,14 @@
+
+<div class="subject">
+<% new_or_existing = subject.new_record? ? 'new' : 'existing' %>
+<% prefix = "source[#{new_or_existing}_subject_attributes][]" %>
+
+<% fields_for prefix, subject do |subject_form| %>
+  <p>
+    <%= subject_form.select :name, subject_options, :include_blank => true %>
+
+    <%= link_to_function "remove", "$(this).up('.subject').remove()" %>
+  </p>
+<% end %>
+</div>
+

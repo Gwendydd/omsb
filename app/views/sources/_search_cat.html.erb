@@ -1,0 +1,116 @@
+<% if params[:search] %>
+<div id="results">
+  <%= render :partial => "results" %>
+</div>
+<% end %>
+
+
+<% form_for @search do |f| %>
+<fieldset>
+<legend>Cataloger Search Form</legend>
+
+<% f.fields_for @search.conditions do |sources| %>
+
+  <p>
+    MyID:                               <%= sources.text_field :my_id_contains, :size => 6 %>
+    Cataloger Initials:                 <%= sources.text_field :cataloger_contains, :size => 9 %>
+  </p>
+
+<div id="publication">
+<h5>Publication Information</h5>
+  <p>
+    Modern Editor/Translator:          <%= sources.text_field :editor_keywords, :size => 100 %>    <br />
+    Book/Article Title:                <%= sources.text_field :title_keywords, :size => 108 %>     <br />
+    Publication Information:           <%= sources.text_field :publication_keywords, :size => 65 %>
+    Publication Date:                  <%= sources.text_field :pub_date_contains, :size => 12 %>     <br />
+    Hyperlink:                         <%= sources.text_field :link_contains, :size => 65 %>
+  </p>
+</div>
+
+<div id = "text">
+<h5>Original Text Information</h5>
+  <table width="85%">
+    <td width="50%" valign="top">
+      Text Name:                         <%= sources.text_field :text_name_keywords, :size => 60 %>  <br />
+      Date: after                        <%= sources.text_field :date_begin_gt, :size => 4 %>
+      and/or before                      <%= sources.text_field :date_end_lt, :size => 4 %>   <br />
+      <%= sources.check_box :trans_none_is, {}, "1", "" %>       Original Language Included <br />
+      <%= sources.check_box :trans_english_is, {}, "1", "" %>    Translated into English <br />
+      <%= sources.check_box :trans_french_is, {}, "1", "" %>     Translated into French   <br />
+      <%= sources.check_box :trans_other_is, {}, "1", "" %>      Translated into another language <br />
+      Translation Comments:              <%= sources.text_field :trans_comment_contains, :size => 60 %><br />
+      Archival Reference:                <%= sources.text_field :archive, :size => 60 %> </td>
+    <td valign="top">
+      <% sources.fields_for sources.object.authors do |authors| %>
+        Medieval Author:                 <%= authors.text_field :name_keywords, :size => 60 %>
+      <% end %>  <br />
+      You can find all records by an author by using the <%= link_to "Medieval Author Search", authors_path,
+         :popup => true %>.<br />
+      <% sources.fields_for sources.object.languages do |languages| %>
+        Original Language:<br />
+          <%= languages.select :name, language_options,
+                                    {},{:include_blank => true, :multiple => true, :size=>5} %>
+    <% end %>
+    <br /><small>Press Control to select multiple languages and find<br /> records that include <i>all</i>
+    of those languages.</small>
+  </table>
+</div>
+
+<div id = "region">
+<h5>Region Information</h5>
+  <table width="85%">
+    <tr><td width="50%" valign="top">
+      County/Town/Parish/Village:     <%= sources.text_field :region_keywords, :size => 60 %>       </td>
+    <td valign="top">
+      <% sources.fields_for sources.object.countries do |countries| %>
+        Geopolitical Region:<br />
+          <%= countries.select :name, country_options,
+                                    {},{:include_blank => true, :multiple => true, :size=>5} %>
+      <% end %>
+    <br /><small>Press Control to select multiple countries and find<br /> records that include <i>all</i>
+    of those countries.</small>
+    </td></tr>
+  </table>
+</div>
+
+<div id = "aids">
+  <h5>Finding Aids</h5>
+  <table>
+  <tr><td width="50%">
+    <% sources.fields_for sources.object.types do |types| %>
+      Record Type:<br />
+        <%= types.select :name, type_options,
+                                    {},{:include_blank => true, :multiple => true, :size=>5} %>
+    <% end %>
+    <br /><small>Press Control to select multiple record types and find<br /> records that include <i>all</i>
+    of those record types.</small>
+  </td><td>
+    <% sources.fields_for sources.object.subjects do |subjects| %>
+      Subject Headings:<br />
+        <%= subjects.select :name, subject_options,
+                                    {},{:include_blank => true, :multiple => true, :size=>5} %>
+    <% end %>
+    <br /><small>Press Control to select multiple subject headings and find<br /> records that include <i>all</i>
+    of those subject headings.</small>
+  </td></tr>
+  </table>
+</div>
+
+<div id = "apparatus">
+<h5>Apparatus</h5>
+  <p>
+    Comments:                      <%= sources.text_field :comments_keywords, :size => 110 %>  <br />
+    Introduction Summary:          <%= sources.text_field :intro_summary_keywords, :size => 99 %><br />
+    Notes:                         <%= sources.text_field :addenda_keywords, :size => 116 %>
+  </p>
+</div>
+
+
+<% end %>
+
+<p>
+  <%= f.submit "Search" %>
+</p>
+</fieldset>
+<% end %>
+

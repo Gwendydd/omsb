@@ -1,0 +1,74 @@
+<div id="details">
+
+<div id="publicationinfo">
+  <p id="biblio"><%= source.editor %>, <i><%= source.title %></i> (<%= source.publication %>, <%= source.pub_date %>).
+     <% if source.isbn? %>
+       ISBN: <%= source.isbn %><br />
+       <%= link_to "Find in a library", "http://worldcat.org/isbn/#{source.isbn}", :popup => true %>
+     <% end %>
+     <% if source.link? %>
+       <span class="data"><%= link_to "View Source Online", source.link, :popup => true %></span></p>
+     <% end %>  
+  </p>
+</div>
+
+<div id="textinfo">
+  <p><span class="label">Text name(s): </span>
+     <span class="data"><%= source.text_name %></span></p>
+  <p><span class="label">Number of pages of primary source text: </span>
+     <span class="data"><%= source.text_pages %></span></p>
+  <p><span class="label">Medieval Author(s): </span>
+       <% source.authors.each do |author| %>
+         <%= link_to author.name, {:controller => 'authors', :action => 'show', :id => author.id} %>
+       <% end %>
+  </p>
+  <p><span class="label">Dates:</span>
+     <span class="data"><%= source.date_begin %> - <%= source.date_end %></span></p>
+  <p><span class="label">Archival Reference: </span>
+     <span class="data"><%= source.archive %></span></p>
+
+  <p><span class="label">Original Language(s): </span>
+    <%= render :partial => 'sources/languages', :locals => {:source => source} %>
+  </p>
+
+  <p><span class="label">Translation: </span>
+       <%= render :partial => 'sources/translations', :locals => {:source => source} %>
+  </p>
+  <p><span class="label">Translation Comments: </span>
+     <span class="data"><%= source.trans_comment %></span></p>
+</div>
+
+<div id="region">
+  <p><span class="label">Geopolitical Region(s): </span>
+    <%= render :partial => 'sources/countries', :locals => {:source => source} %>
+  <p><span class="label">County/Region: </span>
+     <span class="data"><%= source.region %></span></p>
+</div>
+
+<div id="findingaids">
+  <table width="85%">
+    <tr><td valign="top">
+      <span class="label">Record Type(s):<br /> </span>
+        <%= render :partial => 'sources/types', :locals => {:source => source} %>
+    </td><td valign="top">
+      <span class="label">Subject Heading(s):<br /> </span>
+        <%= render :partial => 'sources/subjects', :locals => {:source => source} %>
+    </td></tr>
+  </table>
+</div>
+
+<div id="apparatus">
+  <p><span class="label">Apparatus: </span>
+     <span class="data">
+       <%= render :partial => 'sources/apparatus', :locals => {:source => source} %>
+     </span></p>
+  <p><span class="label">Comments: </span>
+     <span class="data"><%= source.comments %></span></p>
+  <p><span class="label">Introduction Summary: </span>
+     <span class="data"><%= source.intro_summary %></span></p>
+  <p><span class="label">Cataloger: </span>
+     <span class="data"><%= source.cataloger %></span>
+</div>
+
+</div>
+

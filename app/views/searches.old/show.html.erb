@@ -1,0 +1,28 @@
+<h3>Search Results</h3>
+
+<% form_tag ({ :action => 'details' }) do %>
+
+<p>
+  <%= submit_tag 'View Checked Records' %>
+  <%= link_to "Change Search Terms", {:action => 'edit', :id => @search.id} %> |
+  <%= link_to "New search", {:action => 'new'} %>
+</p>
+
+
+<ul id="results">
+  <% @search.sources.each do |c| %>
+    <li>
+      <%= check_box_tag('selected[]', c.id ) %>
+      <%= c.editor %>,
+      <i><%= link_to c.title, :controller => "sources", :action => "show", :id => c.id %></i>
+        (<%= c.publication %>, <%= c.pub_date %>).
+   </li>
+  <% end %>
+</ul>
+
+<p>
+  <%= submit_tag 'View Checked Records' %>
+  <%= link_to "Change Search Terms", {:action => 'edit', :id => @search.id} %> |
+  <%= link_to "New search", {:action => 'new'} %>
+</p>
+<% end %>

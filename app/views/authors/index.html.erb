@@ -1,0 +1,49 @@
+<% if logged_in? %>
+  <%= render :partial => 'users/loggedin' %>
+<% end %>
+
+<h3>Medieval Authors</h3>
+
+<% form_for @search do |f| %>
+<fieldset>
+  <legend>Search Authors:</legend>
+    <% f.fields_for @search.conditions do |authors| %>
+       Name:              <%= authors.text_field :name_contains, :size => 50 %><br />
+    <% end %>
+  <%= f.submit "Search" %>
+</fieldset>
+<% end %>
+
+<p>
+<% if @authors_count > 0 %>
+  <%= @authors_count %> authors found
+
+<p>
+  Number of authors per page: <%= per_page_select %>
+    <% if @search.page_count > 1 %>
+      Page: <%= page_links %>
+    <% end %>
+</p>
+
+  <ul>
+    <% @authors.each do |author| %>
+      <li>                
+        <%= link_to author.name, {:action => 'show', :id => author.id}  %>
+          <% if logged_in? %>
+            <p id="actions">
+              <%= link_to "Edit", {:action => 'edit', :id => author.id} %>
+                <% if current_user.has_role?('administrator') %>
+                  | <%= link_to "Delete", {:action => 'delete', :id => author.id}, 
+                    :confirm => "Are you sure you want to delete this author permanently?" %>
+                  | <%= link_to "New Author", {:action => 'new'} %>
+                <% end %>
+            </p>
+          <% end %>
+      </li>
+     <% end %>
+   </ul>
+<% else %>
+    <p>No authors found</p>
+<% end %>
+</p>	
+

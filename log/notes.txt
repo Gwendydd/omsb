@@ -1,0 +1,10 @@
+Installed Restful Authentication following instructions at http://www.railsforum.com/viewtopic.php?id=14216
+ - need to configure mail settings in config/initializers/mail.rb
+ - need to configure server settings in app/models/user_mailer.rb
+ - update domain name in def permission_denied in lib/authenticated_system.rb
+
+
+If I want only people who created records to be able to edit them:
+http://railsforum.com/viewtopic.php?pid=50906#p50906
+or
+http://railsforum.com/viewtopic.php?pid=53577#p53577

@@ -1,0 +1,152 @@
+<%= render :partial => 'how_cat' %>
+<p> MyID:                             <%= link_to_function "?", toggle_div(:how_myid) %>
+                                      <%= f.text_field :my_id, :size => 6 %>          
+    Cataloger Initials:               <%= link_to_function "?", toggle_div(:how_cataloger) %>
+                                      <%= f.text_field :cataloger, :size => 9 %></p>
+
+<div id = "publication">
+
+  <h5>Publication Information</h5>
+  <%= render :partial => 'how_pub' %>
+
+  <p>
+    Modern Editor/Translator:          <%= link_to_function "?", toggle_div(:how_editor) %>
+                                       <%= f.text_field :editor, :size => 100 %>      <br />
+    Book/Article Title:                <%= link_to_function "?", toggle_div(:how_title) %>
+                                       <%= f.text_field :title, :size => 108 %>       <br />
+    Publication Information:           <%= link_to_function "?", toggle_div(:how_publication) %>
+                                       <%= f.text_field :publication, :size => 65 %> 
+    Publication Date:                  <%= link_to_function "?", toggle_div(:how_pub_date) %>
+                                       <%= f.text_field :pub_date, :size => 12 %>     <br />
+    ISBN:                              <%= link_to_function "?", toggle_div(:how_isbn) %>
+                                       <%= f.text_field :isbn, :size => 13 %>         
+    Text Pages:                        <%= link_to_function "?", toggle_div(:how_text_pages) %>
+                                       <%= f.text_field :text_pages, :size => 5 %>
+    Hyperlink:                         <%= link_to_function "?", toggle_div(:how_link) %>
+                                       <%= f.text_field :link, :size => 65 %>
+  </p>
+</div>
+
+<div id = "text">
+  <h5>Original Text Information</h5>
+  <%= render :partial => 'how_text' %>
+
+  <table width="85%">
+    <td width="50%" valign="top">
+      Text Name:                         <%= link_to_function "?", toggle_div(:how_text_name) %><br />
+                                         <%= f.text_area :text_name, :size => "50x4" %>  <br />
+      Earliest Date:                     <%= link_to_function "?", toggle_div(:how_dates) %>
+                                         <%= f.text_field :date_begin, :size => 4 %>
+      Latest Date:                       <%= f.text_field :date_end, :size => 4 %>       <br />
+      <%= f.check_box :trans_none %>     Original Language Included 
+                                           <%= link_to_function "?", toggle_div(:how_trans_none) %><br />
+      <%= f.check_box :trans_english %>  Translated into English                        
+                                           <%= link_to_function "?", toggle_div(:how_trans_english ) %> <br />
+      <%= f.check_box :trans_french %>   Translated into French                          
+                                           <%= link_to_function "?", toggle_div(:how_trans_french) %><br />
+      <%= f.check_box :trans_other %>    Translated into another language                
+                                           <%= link_to_function "?", toggle_div(:how_trans_other) %><br />
+      Translation Comments:              <%= link_to_function "?", toggle_div(:how_trans_comment) %><br />
+                                         <%= f.text_area :trans_comment, :size => "50x2" %><br />
+      Archival Reference:                <%= link_to_function "?", toggle_div(:how_archive) %><br />
+                                         <%= f.text_area :archive, :size => "50x2" %> </td>
+    <td valign="top">
+        Medieval Author(s):
+          <%= link_to_function "?", toggle_div(:how_author) %>
+          <%= add_authorship_link "Add an author" %>
+          <div id="authorships">
+            <%= render :partial => 'authorship', :collection => @source.authorships %>
+          </div>
+          <%= link_to "Find Authors", {:controller => 'authors',
+                                       :action => 'index'},
+                                       :popup => true %>
+          <br />
+        Original Language(s):    
+          <%= link_to_function "?", toggle_div(:how_language) %>
+          <%= add_language_link "Add a language" %>
+          <div id="languages">
+            <%= render :partial => 'language', :collection => @source.languages %>
+          </div>
+    </td>
+  </table>
+</div> 
+    
+    
+<div id = "region">
+
+  <h5>Region Information</h5>
+  <%= render :partial => 'how_reg' %>
+  <table width="85%">
+    <tr>
+      <td width="50%" valign="top">
+        County/Town/Parish/Village:     <%= link_to_function "?", toggle_div(:how_region) %><br />  
+                                        <%= f.text_field :region, :size => 60 %>       </td>
+      <td valign="top">
+         Geopolitical Region:           <%= link_to_function "?", toggle_div(:how_country) %>
+           <%= add_country_link "Add a region" %>
+           <div id="countries">
+             <%= render :partial => 'country', :collection => @source.countries %>
+           </div>
+          </div>
+       </td>
+     </tr>
+  </table>
+</div>
+
+<div id = "aids">
+  <h5>Finding Aids</h5>
+  <%= render :partial => 'how_aids' %>
+  <table width="85%">
+    <tr>
+      <td width="50%" valign="top">
+        Record Type(s):                 <%= link_to_function "?", toggle_div(:how_type) %>
+          <%= add_type_link "Add a record type" %>
+          <div id="types">
+            <%= render :partial => 'type', :collection => @source.types %>
+          </div>
+      </td>
+      <td valign="top">
+        Subject Headings:               <%= link_to_function "?", toggle_div(:how_subject) %>
+          <%= add_subject_link "Add a subject" %>
+          <div id="subjects">
+            <%= render :partial => 'subject', :collection => @source.subjects %>
+          </div>
+      </td>
+     </tr>
+  </table>
+</div>
+
+<div id = "apparatus">
+  <h5>Apparatus</h5>
+  <%= render :partial => 'how_apparatus' %>
+    <table>
+      <tr><td width="200">
+        <%= f.check_box :app_index %>         Index
+                                              <%= link_to_function "?", toggle_div(:how_app_index) %><br />
+        <%= f.check_box :app_glossary %>      Glossary                        
+                                              <%= link_to_function "?", toggle_div(:how_app_glossary) %><br />
+        <%= f.check_box :app_appendix %>      Appendices                      
+                                              <%= link_to_function "?", toggle_div(:how_app_appendices) %><br />
+      </td><td>
+        <%= f.check_box :app_bibliography %>  Bibliography                    
+                                              <%= link_to_function "?", toggle_div(:how_app_bibliography) %><br />
+        <%= f.check_box :app_facsimile %>     Facsimile                       
+                                              <%= link_to_function "?", toggle_div(:how_app_facsimile) %><br />
+        <%= f.check_box :app_intro %>         Introduction                    
+                                              <%= link_to_function "?", toggle_div(:how_app_intro) %><br />
+      </td></tr>
+    </table>
+    <p>
+      <%= link_to_function "Show/hide formatting instructions for Comments and Introduction Summary", 
+                           toggle_div(:how_formatting) %><br />
+      Comments:                      <%= link_to_function "?", toggle_div(:how_comments) %><br />                
+                                     <%= f.text_area :comments, :size => "100x12" %>  <br />
+      Introduction Summary:          <%= link_to_function "?", toggle_div(:how_intro_summary) %><br />    
+                                     <%= f.text_area :intro_summary, :size => "100x12" %><br />
+      Notes:                         <%= link_to_function "?", toggle_div(:how_notes) %><br />                  
+                                     <%= f.text_area :addenda, :size => "100x4" %> 
+    </p>
+</div>
+
+<p>Make record public: <%= f.check_box :live %> <%= link_to_function "?", toggle_div(:how_live) %></p>
+

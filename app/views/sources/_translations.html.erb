@@ -1,0 +1,12 @@
+       <% if source.trans_none? %>
+         Original language included.
+       <% end %>
+       <% if source.trans_english %>
+         English translation.
+       <% end %>
+       <% if source.trans_french %>
+         French translation.
+       <% end %>
+       <% if source.trans_other %>
+         Other language translation.
+       <% end %>

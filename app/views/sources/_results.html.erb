@@ -1,0 +1,58 @@
+<div id="per_page">
+<p><b><% if @sources_count > 0 %>
+  <%= @sources_count %> Sources found</b> | 
+    Per page: <%= per_page_select %>
+    <% if @search.page_count > 1 %>
+          | <%= page_links %>
+    <% end %>
+</div>
+
+  <p>Sort by: <%= order_by_link :pub_date, :text => "Publication Date" %> | 
+              <%= order_by_link :editor %> | 
+              <%= order_by_link :title %>
+              <% if logged_in? %>
+                | <%= order_by_link :my_id, :text => "MyID" %>
+                | <%= order_by_link :cataloger %>
+                | <%= order_by_link :publication, :text => "Publication Information" %>
+                | <%= order_by_link :text_name %>
+                | <%= order_by_link :addenda, :text => "Notes" %>
+                | <%= order_by_link :created_at %>
+                | <%= order_by_link :updated_at %>
+              <% end %>
+
+<% form_tag ({ :action => 'details' }) do %>
+
+<p>
+  <%= submit_tag 'View Checked Records' %>
+</p>
+
+<ul id="results">
+  <% @sources.each do |c| %>
+    <li>
+      <%= check_box_tag('selected[]', c.id ) %>
+      <%= c.editor %>,
+      <i><%= link_to c.title, :controller => "sources", :action => "show", :id => c.id %></i>
+        (<%= c.publication %>, <%= c.pub_date %>).
+      <% if logged_in? %>
+        <p id="actions">
+          <%= link_to "See Cataloger View", {:controller => "sources", :action => "show_cat", :id => c.id} %> |
+          <%= link_to "Edit", {:controller => "sources", :action => 'edit', :id => c.id} %> |
+          <%= link_to "Delete", {:controller => "sources", :action => 'delete', :id => c.id},
+              :confirm => "Are you sure you want to delete this record permanently?" %>
+        </p>
+      <% end %>
+   </li>
+  <% end %>
+</ul>
+
+<p>
+  <%= submit_tag 'View Checked Records' %>
+</p>
+<% end %>
+
+
+<% else %>
+    <p>No Sources were found.</b></p>
+<% end %>
+
+

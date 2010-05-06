@@ -1,0 +1,25 @@
+<%= render :partial => 'users/loggedin' %>
+
+<h3><%=h @user.login %>'s Records</h3>
+
+<p>Records with a dark background are hidden from the public.</p>
+
+<ul id="recordlist">
+  <% @user.sources.each do |c|  %>
+    <% if c.live? %>
+      <li>
+    <% else %>
+      <li id="private">
+    <% end %>
+      <%= c.my_id %>:
+      <%= c.editor %>, 
+      <i><%= c.title %></i> (<%= c.publication %>, <%= c.pub_date %>).
+      <p id="actions">
+        <%= link_to "View Record", {:controller => "sources", :action => "show_cat", :id => c.id} %> |
+        <%= link_to "Edit", {:controller => "sources", :action => 'edit', :id => c.id} %> | 
+        <%= link_to "Delete", {:controller => "sources", :action => 'delete', :id => c.id}, 
+              :confirm => "Are you sure you want to delete this record permanently?" %>
+      </p>
+     </li>
+  <% end %>
+</ul>

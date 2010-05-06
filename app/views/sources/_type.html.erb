@@ -1,0 +1,13 @@
+
+<div class="type">
+<% new_or_existing = type.new_record? ? 'new' : 'existing' %>
+<% prefix = "source[#{new_or_existing}_type_attributes][]" %>
+
+<% fields_for prefix, type do |type_form| %>
+  <p>
+   <%= type_form.select :name, type_options, :include_blank => true %>
+    <%= link_to_function "remove", "$(this).up('.type').remove()" %>
+  </p>
+<% end %>
+</div>
+

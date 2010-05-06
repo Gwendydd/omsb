@@ -1,0 +1,21 @@
+<%= render :partial => 'users/loggedin' %>
+
+<h3>Edit record</h3>
+
+<div id="entry">
+
+<div id="error_message">
+  <%= error_messages_for 'source' %>
+</div>
+
+<p>Clicking on the "?" after the field name will show/hide instructions for that field.</p>
+
+<% form_for :source, :url => source_path(@source), :html => { :method => 'put' } do |f| %>
+
+<%= render :partial => 'entryform', :locals => { :f => f }  %>
+
+<p><%= submit_tag "Update Record" %></p>
+<% end %>
+
+</div>
+

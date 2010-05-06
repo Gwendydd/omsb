@@ -1,0 +1,11 @@
+<% if logged_in? %>
+  <%= render :partial => 'users/loggedin' %>
+
+  <%= render :partial => 'search_cat' %>
+
+<% else %>
+  <%= render :partial => 'search' %>
+
+
+<% end %>
+

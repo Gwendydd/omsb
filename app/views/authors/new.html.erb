@@ -1,0 +1,50 @@
+<%= render :partial => 'users/loggedin' %>
+
+<h3>Add an author:</h3>
+
+<% form_for(@author) do |f| %>
+<p>
+  Name:       <%= f.text_field :name, :size => 50 %>              <br />
+  Alias:      <%= f.text_field :alias, :size => 50 %>             <br />
+  Title:      <%= f.text_field :title, :size => 50 %>             <br />
+  Begin Date: <%= f.text_field :date_begin, :size => 4 %>
+  End Date:   <%= f.text_field :date_end, :size => 4 %>           <br />
+  Circa       <%= f.check_box :date_circa %>
+  Date Type:  <%= f.select :date_type, ['lived',
+                                       'died',
+                                       'flourished',
+                                       'reigned']  %> <br />
+  Biography:<br />  <%= f.text_area :bio, :size => "50x8" %>
+</p>
+
+<p><%= submit_tag "Add Author"%></p>
+<% end %>
+
+      <table border="1">
+      </td><td colspan="2">
+        <b>Basic Formatting for Biography:</b>
+      </td></tr>
+      <tr>
+        <td>You type:</td>
+        <td>Looks like:</td>
+      </tr><tr>
+        <td>_italics_</td>
+        <td><i>italics</i></td>
+      </tr><tr>
+        <td>*bold*</td>
+        <td><b>bold</b></td>
+      </tr><tr>
+        <td>"Google":http://google.com</td>
+        <td><a href="http://google.com">Google</a></td>
+      </tr><tr>
+        <td>* an item <br /> * another item <br />  * and another </td>
+        <td><ul id="none"><li>an item</li><li>another item</li><li>and another</li></ul></td>
+      </tr><tr>
+        <td># item one <br /> # item two <br /> # item three </td>
+        <td><ol style="margin-left: -1em;"><li>item one</li><li>item two</li><li>item three</li></ol></td>
+      </tr><tr>
+        <td colspan="2">
+          <a href="http://hobix.com/textile/quick.html" target="_blank">More formatting options</a>
+        </td></tr>
+    </table>
+

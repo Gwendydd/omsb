@@ -1,0 +1,35 @@
+one:
+  text_name: MyString
+  author: MyString
+  editor: MyString
+  link: MyString
+  facsimile: MyString
+  date_begin: 1
+  date_end: 1
+  language: MyString
+  trans_none: false
+  trans_english: false
+  trans_french: 
+  trans_other: false
+  country: MyString
+  region: MyString
+  type: MyString
+  subject: MyString
+
+two:
+  text_name: MyString
+  author: MyString
+  editor: MyString
+  link: MyString
+  facsimile: MyString
+  date_begin: 1
+  date_end: 1
+  language: MyString
+  trans_none: false
+  trans_english: false
+  trans_french: 
+  trans_other: false
+  country: MyString
+  region: MyString
+  type: MyString
+  subject: MyString

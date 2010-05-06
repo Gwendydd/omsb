@@ -1,0 +1,19 @@
+<%= render :partial => 'users/loggedin' %>
+
+<h3>Edit Profile</h3>
+
+<% form_for :user, :url => user_url(@user), :html => { :method => :put } do |f| %>
+  <p>
+    Login:          <%= f.text_field :login,    :size => 60 %>    <br />
+    Name:           <%= f.text_field :name,     :size => 60 %>    <br />
+    Initials:       <%= f.text_field :initials, :size => 5 %>     <br />
+    Email:          <%= f.text_field :email,    :size => 60 %>
+  </p>
+
+<p>
+<%= submit_tag 'Save' %>
+</p>
+
+<% end %>
+
+

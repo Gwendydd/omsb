@@ -1,0 +1,14 @@
+<div class="authorship">
+<% new_or_existing = authorship.new_record? ? 'new' : 'existing' %>
+<% prefix = "source[#{new_or_existing}_authorship_attributes][]" %>
+
+<% fields_for prefix, authorship do |authorship_form| %>
+  <p>
+    <%= authorship_form.collection_select(:author_id, Author.find(:all), :id, :name, :include_blank => true) %>
+    <%= link_to_function "remove", "$(this).up('.authorship').remove()" %>
+  </p>
+<% end %>
+</div>
+
+
+

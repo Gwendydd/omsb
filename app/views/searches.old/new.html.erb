@@ -1,0 +1,62 @@
+<%= error_messages_for :search %>
+<% form_for @search do |f| %>
+
+<p>
+  Text Name:                <%= f.text_field :text_name, :size => 95 %>       <br />
+  Medieval Author:          <%= f.text_field :author_id, :size => 85 %>        <br />
+  You can find all records by an author by using the <%= link_to "Medieval Author Search", authors_path, 
+         :popup => true %>.<br />
+  Modern Editor/Translator: <%= f.text_field :editor, :size => 80 %>            
+</p>    
+
+<p>
+  <%= f.check_box :link %>            Limit search to sources available online
+  <%= f.check_box :app_facsimile %>   Limit search to facsimiles    
+</p>
+
+<p>
+  Date: after               <%= f.text_field :date_begin, :size => 4 %> 
+  and/or before             <%= f.text_field :date_end, :size => 4 %>
+</p>
+
+<table>
+  <tr><td>
+    Original language: <br />
+                            <%= collection_select(:language, :language_id, Language.find(:all, :order => "name"), 
+                                :id, :name, {}, :multiple => "true", :size => "5" ) %> <br />
+    <small>Use "Control" to select multiple languages and find records with all of those languages.</small>
+  </td><td>
+    <%= f.check_box :trans_none %> Original Language Included <br />
+    <%= f.check_box :trans_english %> Translated into English <br />
+    <%= f.check_box :trans_french %> Translated into French   <br />
+    <%= f.check_box :trans_other %> Translated into another language <br />
+  </td></tr>
+  <tr><td>
+    Geopolitical Region: <br />           
+                            <%= collection_select(:country, :id, Country.find(:all, :order => "name"),
+                                :id, :name, {}, :multiple => "true", :size => "5" ) %> <br />
+    <small>Use "Control" to select multiple regions and find records with all of those regions.</small>
+  </td><td>
+    County/Parish/Town/Village: <br />
+                            <%= f.text_field :region %>
+  </td></tr>
+  <tr><td>
+    Record Type: <a style="help" href="../index_rectype.html" target="_blank">Record Type Help</a> <br />
+                            <%= collection_select(:type, :id, Type.find(:all, :order => "name"),
+                                :id, :name, {}, :multiple => "true", :size => "5" ) %> <br />
+    <small>Use "Control" to select multiple record types and find records with all of those types.</small>
+  </td><td>
+    Subject Heading: <a style="help" href="../index_subjects.html" target="blank">Subject Heading Help</a> <br />
+                            <%= collection_select(:subject, :id, Subject.find(:all, :order => "name"),
+                                :id, :name, {}, :multiple => "true", :size => "5" ) %> <br />
+    <small>Use "Control" to select multiple subject headingss and find records with all of those subjects.</small>
+  </td></tr>
+</table>
+
+
+  <p><%= f.submit "Search" %></p>
+
+<% end %>
+
+
+

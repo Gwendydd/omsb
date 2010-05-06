@@ -1,0 +1,52 @@
+          <% if logged_in? %>
+            <p>
+              <%= link_to "Edit", {:action => 'edit', :id => @author.id} %>
+                <% if current_user.has_role?('administrator') %>
+                  | <%= link_to "Delete", {:action => 'delete', :id => @author.id},
+                    :confirm => "Are you sure you want to delete this author permanently?" %>
+                <% end %>
+            </p>
+          <% end %>
+
+<p>
+  <b><%= @author.name -%></b>
+
+  <% if @author.alias? -%>
+    (<%= @author.alias -%>)
+  <% end -%>
+
+  <% if @author.title? -%> <%= @author.title -%>
+  <% end -%>
+
+<br />
+
+  <%= @author.date_type -%>
+
+  <% if @author.date_circa? -%>c. <% end -%>
+
+  <%= @author.date_begin -%>-<%= @author.date_end -%>
+
+</p>
+
+<p><%= @author.bio %></p>
+
+<p>OMSB Records by <%= @author.name %>:
+    <ul>
+      <% @author.sources.each do |c| %>
+    <li>
+      <%= c.editor %>,
+      <i><%= link_to c.title, :controller => "sources", :action => "show", :id => c.id %></i>
+        (<%= c.publication %>, <%= c.pub_date %>).
+      <% if logged_in? %>
+        <p id="actions">
+          <%= link_to "See Cataloger View", {:controller => "sources", :action => "show_cat", :id => c.id} %> |
+          <%= link_to "Edit", {:controller => "sources", :action => 'edit', :id => c.id} %> |
+          <%= link_to "Delete", {:controller => "sources", :action => 'delete', :id => c.id},
+              :confirm => "Are you sure you want to delete this record permanently?" %>
+        </p>
+      <% end %>
+ 
+   </li>
+  <% end %>
+
+

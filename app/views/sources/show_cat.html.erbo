@@ -1,0 +1,89 @@
+<h3>Viewing Record</h3>
+
+Links for edit, delete, new
+
+<div id="details">
+
+<div id="publication">
+  <h5>Publication Information</h5>
+  <p><span class="label">Modern Editor/Translator: </span>
+     <span class="data"><%= @source.editor %></span></p>
+  <p><span class="label">Book/Article Title: </span>
+     <span class="data"><i><%= @source.title %></i></span></p>
+  <p><span class="label">Publication Information: </span>
+     <span class="data"><%= @source.publication %>, <%= @source.pub_date %>.</span></p>
+  <p><span class="label">ISBN: </span>
+     <span class="data"><%= @source.isbn %></span></p>
+  <p><span class="label">Number of pages of primary source text: </span>
+     <span class="data"><%= @source.text_pages %></span></p>
+  <% if @source.link? %>
+    <p><span class="label">Hyperlink: </span>
+      <span class="data"><%= link_to "View Source Online", @source.link, :popup => true %></span></p>
+  <% end %>
+</div>
+
+<div id="text">
+  <h5>Original Text Information</h5>
+  <p><span class="label">Text name(s): </span>
+     <span class="data"><%= @source.text_name %></span></p>
+  <p><span class="label">Medieval Author(s): </span>
+       <% @source.authors.each do |author| %>
+         <%= author.name %>
+       <% end %>
+  </p>
+  <p><span class="label">Dates:</span>
+     <span class="data"><%= @source.date_begin %> - <%= @source.date_end %></span></p>
+  <p><span class="label">Archival Reference: </span>
+     <span class="data"><%= @source.archive %></span></p>
+  <p><span class="label">Original Language(s): </span>
+       <% @source.languages.each do |language| %>
+         <%= language.name.join("; ")  %>;
+       <% end %>  
+  </p>
+  <p><span class="label">Original Language Included: </span>
+
+  <p><span class="label">Translated Into: </span>
+
+  <p><span class="label">Translation Comments: </span>
+     <span class="data"><%= @source.trans_comment %></span></p>
+</div>
+
+<div id="region">
+  <h5>Region Information</h5>
+  <p><span class="label">Geopolitical Region(s): </span>
+
+  <p><span class="label">County/Region: </span>
+     <span class="data"><%= @source.region %></span></p>
+</div>
+
+<div id="aids">
+<h5>Finding Aids</h5>
+  <p><span class="label">Record Type: </span>
+
+  <p><span class="label">Subject Headings: </span>
+
+</div>
+
+<div="apparatus">
+<h5>Apparatus</h5>
+  <p><span class="label">Apparatus: </span>
+     <ul id="horiz">
+        <li><span class="label">Facsimile: </span>
+        <li><span class="label">Bibliography: </span>
+        <li><span class="label">Index: </span>
+        <li><span class="label">Glossary: </span>
+        <li><span class="label">Appendices: </span>
+        <li><span class="label">Introduction: </span>
+     </ul></p>
+  <p><span class="label">Comments: </span>
+     <span class="data"><%= @source.comments %></span></p>
+  <p><span class="label">Introduction Summary: </span>
+     <span class="data"><%= @source.intro_summary %></span></p>
+  <p><span class="label">Cataloger: </span>
+     <span class="data"><%= @source.user.initials %></span></p>
+</div>
+</div>
+
+</div>
+<hr />
+

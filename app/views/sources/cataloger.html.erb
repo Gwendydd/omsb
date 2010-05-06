@@ -1,0 +1,34 @@
+<%= render :partial => 'users/loggedin' %>
+
+<h3>Welcome, cataloger!</h3>
+
+<p>Menu:</p>
+<ul>
+  <li> <%= link_to "Create New Record", {:controller => 'sources', :action => 'new'} %>          </li>
+  <li> <%= link_to "See Your Records", user_path(current_user) %> </li>
+  <li> <%= link_to "Search Records", sources_path %> </li>
+  <li> <%= link_to "View/Search Authors", authors_path %> </li>
+  <li> <%= link_to "Cataloging Instructions", {:controller => 'about', :action => 'instructions' } %> </li>
+</ul>
+
+<p>Useful links:</p>
+<ul>
+  <li><a href="http://www.library.fordham.edu/">Fordham Library</a></li>
+  <li><a 
+href="http://avoserv.library.fordham.edu/login?url=http://firstsearch.oclc.org/autho=100117074;dbname=WorldCat;FSIP">WorldCat</a></li>
+  <li><a href="http://nypl.org/">New York Public Library</a></li>
+  <li><a href="http://www.hti.umich.edu/t/tmr/">Medieval Review</a></li>
+  <li><a href="http://www.fordham.edu/halsall/sbook.html">Internet Medieval Sourcebook</a></li>
+  <li><a href="http://www.novaroma.org/via_romana/numbers.html">Roman Numeral Converter</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Main_Page">Wikipedia</a></li>
+  <li><a href="http://www.newadvent.org/cathen/">Catholic Encyclopedia</a></li>
+  <li><a href="http://www.amazon.com/">Amazon</a></li>
+</ul>
+
+
+
+
+
+
+
+

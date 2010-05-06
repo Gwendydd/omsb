@@ -1,0 +1,18 @@
+
+<%= render :partial => 'users/loggedin' %>
+
+
+<h2>All Users</h2>
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Name</th>
+    <th>Initials</th>
+    <th>Email</th>
+    <th>Roles</th>
+    <th>See Records</th>
+  </tr>
+    <%= render :partial => 'user', :collection => @users %>
+</table>
+
+
